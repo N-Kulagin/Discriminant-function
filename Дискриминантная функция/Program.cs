@@ -62,6 +62,11 @@ namespace Дискриминантная_функция
 
             return Sum / counter;
         }
+        public static double DiscriminantFunction(double x, double y, double[,] b_Vect, double[,] p_Val)
+        {
+            double result = b_Vect[0, 0] * x + b_Vect[1, 0] * y + p_Val[0, 0];
+            return result;
+        }
         static void Main(string[] args)
         {
             string path = @"C:\Users\ADM\Desktop\Проекты C# Visual Studio 2019\Дискриминантная функция\ExcelFile.xlsx";
@@ -71,10 +76,10 @@ namespace Дискриминантная_функция
             double[,] LearningDataB = excel.ReadRange(27, 1, 51, 2);
             double[,] FullLearningData = excel.ReadRange(2, 1, 51, 2);
 
-            //double AvgA1 = AverageVal(LearningDataA, 0);
-            //double AvgA2 = AverageVal(LearningDataA, 1);
-            //double AvgB1 = AverageVal(LearningDataB, 0);
-            //double AvgB2 = AverageVal(LearningDataB, 1);
+            double[,] AvgA = { { AverageVal(LearningDataA, 0), AverageVal(LearningDataA, 1) } };
+            double[,] AvgB = { { AverageVal(LearningDataB, 0), AverageVal(LearningDataB, 1) } };
+            double[,] AvgMinusAvg = { { AvgA[0, 0] - AvgB[0, 0], AvgA[0, 1] - AvgB[0, 1] } };
+            double[,] AvgPlusAvg = { { AvgA[0, 0] + AvgB[0, 0], AvgA[0, 1] + AvgB[0, 1] } };
 
             double AvgTotal1 = AverageVal(FullLearningData, 0);
             double AvgTotal2 = AverageVal(FullLearningData, 1);
@@ -89,8 +94,39 @@ namespace Дискриминантная_функция
             excel.WriteRange(3, 6, 4, 7, CovarMatrix);
             excel.Save();
 
+            double[,] InverseCovarMatrix = excel.ReadRange(3, 9, 4, 10);
+
+            double[,] b_Vector = Matrix.Multiply(AvgMinusAvg, InverseCovarMatrix);
+            b_Vector = Matrix.Transpose(b_Vector);
+
+            double[,] p_Value = Matrix.MultiplyByValue(Matrix.Multiply(AvgPlusAvg, b_Vector), -0.5);
 
             excel.Close();
+
+            int counter = 0;
+            double x;
+            double y;
+            while (true)
+            {
+                if (counter == 3)
+                {
+                    Console.Clear();
+                    counter = 0;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Укажите координаты:");
+                Console.Write("X: ");
+                x = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Y: ");
+                y = Convert.ToDouble(Console.ReadLine());
+
+                if (DiscriminantFunction(x, y, b_Vector, p_Value) > 0)
+                {
+                    Console.WriteLine($"Данная точка принадлежит образу А. Её значение функции: {DiscriminantFunction(x, y, b_Vector, p_Value)} (F > 0)");
+                }
+                else Console.WriteLine($"Данная точка принадлежит образу Б. Её значение функции: {DiscriminantFunction(x, y, b_Vector, p_Value)} (F < 0)");
+            }
         }
     }
 }

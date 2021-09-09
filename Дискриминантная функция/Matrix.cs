@@ -66,5 +66,29 @@ namespace Дискриминантная_функция
 
             return returnArr;
         }
+        public static double[,] Transpose(double[,] arr)
+        {
+            double[,] myArr = new double[arr.GetLength(1), arr.GetLength(0)];
+
+            for (int i = 0; i < myArr.GetLength(0); i++)
+            {
+                for (int j = 0; j < myArr.GetLength(1); j++)
+                {
+                    myArr[i, j] = arr[j, i];
+                }
+            }
+            return myArr;
+        }
+        public static double[,] MultiplyByValue(double[,] arr, double val)
+        {
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    arr[i, j] *= val;
+                }
+            }
+            return arr;
+        }
     }
 }
