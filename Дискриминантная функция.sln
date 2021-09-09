@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Дискриминантная функция", "Дискриминантная функция\Дискриминантная функция.csproj", "{5DC8182C-67B4-4DC8-A7E1-9F06DD7D58B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DC8182C-67B4-4DC8-A7E1-9F06DD7D58B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC8182C-67B4-4DC8-A7E1-9F06DD7D58B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC8182C-67B4-4DC8-A7E1-9F06DD7D58B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC8182C-67B4-4DC8-A7E1-9F06DD7D58B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3AF038A-6060-4589-9E6F-274CB9C355F6}
+	EndGlobalSection
+EndGlobal
