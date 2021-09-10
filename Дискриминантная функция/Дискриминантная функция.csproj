@@ -18,10 +18,4 @@
     </COMReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="NKulaign.Matrices">
-      <HintPath>..\..\NKulaign.Matrices\NKulaign.Matrices\bin\Debug\net5.0\NKulaign.Matrices.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
