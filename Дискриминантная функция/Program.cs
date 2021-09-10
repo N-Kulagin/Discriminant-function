@@ -69,7 +69,8 @@ namespace Дискриминантная_функция
         }
         static void Main(string[] args)
         {
-            string path = @"C:\Users\ADM\Desktop\Проекты C# Visual Studio 2019\Дискриминантная функция\ExcelFile.xlsx";
+            //string path = @"C:\Users\ADM\Desktop\Проекты C# Visual Studio 2019\Дискриминантная функция\ExcelFile.xlsx";
+            string path = AppContext.BaseDirectory + "ExcelFile.xlsx"; // запуск в Release
             Excel excel = new Excel(path, 1);
 
             double[,] LearningDataA = excel.ReadRange(2, 1, 26, 2);
